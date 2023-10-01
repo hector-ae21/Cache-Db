@@ -1,89 +1,81 @@
-## Estructura del proyecto
+## Description:
+This project is a local persistent database that is capable of storing key-value pairs and grouping them into data collections.
 
-La estructura del proyecto es la clásica de un proyecto
-gradle con varios subproyectos. Nos encontraremos los 
-siguientes archivos y carpetas:
+## Project Structure
 
-- `lib` Subproyecto para la librería.
-- `app` Subproyecto para la aplicación de consola.
-- `gradlew[.bat]` Script para usar gradle incluido en el proyecto.
-- `settings.gradle` Archivo de configuración donde se define el nombre del proyecto
-  así como los subproyectos incluidos.
+The project structure is the classic structure of a gradle project with several subprojects. We will find the following files and folders:
 
-## Librería
-El subproyecto de librería está destinado a crear la lógica
-de negocio separada de la propia aplicación. 
+- `lib` Subproject for the library.
+- `app` Subproject for the console application.
+- `gradlew[.bat]` Script to use gradle included in the project.
+- `settings.gradle` Configuration file where the project name is defined as well as the included subprojects.
 
-## Aplicación
-El subproyecto de aplicación está destinado a la implementación de
-una aplicación de consola (CLI - Command Line Interface).
+## Library
+The library subproject is intended to create the business logic separate from the application itself.
 
-## Compilación del proyecto
-Para compilar el proyecto completo
+## Application
+The application subproject is intended for the implementation of a console application (CLI - Command Line Interface).
+
+## Project Compilation
+To compile the complete project
 ```
 ./gradlew build
 ```
 
-Para compilar uno de los subproyectos en concreto:
+To compile one of the specific subprojects:
 ```
 ./gradlew build -p lib
 ./gradlew build -p app
 ```
-## Comprobar tests en el proyecto
-Para lanzar todos los tests del proyecto
+## Check tests in the project
+To launch all the tests of the project
 ```
 ./gradlew test
 ```
 
-Para lanzar los test de un subproyecto en concreto:
+To launch the tests of a specific subproject:
 ```
 ./gradlew test -p lib
 ./gradlew test -p app
 ```
-## Uso de la aplicación de consola
+## Use of the console application
 
-Al compilar el subproyecto `app` se genera una distribución de la
-aplicación como archivo comprimido `build/distributions/app.zip`. 
-Al descomprimir, nos aparecerá una carpeta `app` que contendrá los .jar
-generados de la compilacion (subcarpeta `lib`) y los scripts para 
-lanzarla la aplicación (subcarpeta `app`).
+When compiling the `app` subproject, a distribution of the application is generated as a compressed file `build/distributions/app.zip`. When unzipping, an `app` folder will appear that will contain the .jar files generated from the compilation (subfolder `lib`) and the scripts to launch the application (subfolder `app`).
 
-## Comandos disponibles
+## Available Commands
 
 ```
-app.bat add <key> <value>  # Añade un valor a la librería en la coleccion default
-app.bat add <key> <value> -collect <collection> # Agrega un nuevo par de clave-valor a la colección indicada
-app.bat put <key> <value>  # Actualiza un valor de la librería en la coleccion default si existe
-app.bat put <key> <value> -collect <collection> # Actualiza un par de clave-valor en la colección indicada si existe, sino lo crea
-app.bat get <key>          # Obtiene un valor de la librería en la coleccion default si existe
-app.bat get <key> -collect <collection> # Obtiene un valor de la Colección indicada si existe
-app.bat remove <key>       # Elimina un valor de la librería en la coleccion default si existe
-app.bat remove <key> -collect <collection> # Elimina un valor de la Colección indicada si existe
-app.bat exists <key>       # Comprueba si existe un valor en la librería en la coleccion default
-app.bat exists <key> -collect <collection> # Comprueba si existe un valor en la Colección indicada
-app.bat get-all            # Obtiene todas las claves de la librería en la coleccion default
-app.bat get-all -collect <collection> # Obtiene todas las claves de la Colección indicada
-app.bat get-all -c        # Obtiene la cantidad de valores de la librería en la coleccion default
-app.bat get-all -c -collect <collection> # Obtiene la cantidad de valores de la Colección indicada
+app.bat add <key> <value>  # Adds a value to the library in the default collection
+app.bat add <key> <value> -collect <collection> # Adds a new key-value pair to the indicated collection
+app.bat put <key> <value>  # Updates a value of the library in the default collection if it exists
+app.bat put <key> <value> -collect <collection> # Updates a key-value pair in the indicated collection if it exists, otherwise it creates it
+app.bat get <key>          # Gets a value from the library in the default collection if it exists
+app.bat get <key> -collect <collection> # Gets a value from the indicated Collection if it exists
+app.bat remove <key>       # Removes a value from the library in the default collection if it exists
+app.bat remove <key> -collect <collection> # Removes a value from the indicated Collection if it exists
+app.bat exists <key>       # Checks if a value exists in the library in the default collection
+app.bat exists <key> -collect <collection> # Checks if a value exists in the indicated Collection
+app.bat get-all            # Gets all the keys from the library in the default collection
+app.bat get-all -collect <collection> # Gets all the keys from the indicated Collection
+app.bat get-all -c        # Gets the number of values from the library in the default collection
+app.bat get-all -c -collect <collection> # Gets the number of values from the indicated Collection
 
 ```
 
-### Test unitarios
-El proyecto cuenta con test unitarios que comprueban el correcto funcionamiento de cada uno de los métodos y clases implementadas
+### Unit Tests
+The project has unit tests that check the correct operation of each of the methods and classes implemented
 
-### Colecciones
-El proyecto cuenta con colecciones de datos que permiten almacenar y recuperar datos de forma eficiente. En el caso de que no se indique una coleccion los datos se almacenaran en una coleccion "default".
-Para indicar la coleccion es necesario utilizar cualquiera de los siguientes parametros:
-- -collect <nombre-de-la-coleccion>
-- --collection <nombre-de-la-coleccion>
+### Collections
+The project has data collections that allow storing and retrieving data efficiently. In case a collection is not indicated, the data will be stored in a "default" collection.
+To indicate the collection it is necessary to use any of the following parameters:
+- -collect <collection-name>
+- --collection <collection-name>
 
-### Persistencia con Encriptacion
-Todos los datos almacenados se encuentran encriptados para que en caso de acceder al archivo de persistencia no se puede acceder a la información
+### Persistence with Encryption
+All stored data is encrypted so that in case of accessing the persistence file you cannot access the information
 
-### Persistencia con compresion
-Todos los datos almacenados se encuentran comprimidos en un solo archivo zip por cada colección.
-
-
+### Persistence with compression
+All stored data is compressed into a single zip file for each collection.
 
 [gradle]: https://gradle.org
 [picocli]: https://picocli.info
