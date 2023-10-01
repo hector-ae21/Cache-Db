@@ -1,9 +1,3 @@
-# Plantilla Gradle para aplicación de consola
-
-Plantilla de proyecto [Gradle][gradle] para crear una aplicación de consola
-y una librería consumida por esta. La aplicación de consola usa [Picocli][picocli] 
-para facilitar la composición de comandos y parámetros.
-
 ## Estructura del proyecto
 
 La estructura del proyecto es la clásica de un proyecto
@@ -16,13 +10,6 @@ siguientes archivos y carpetas:
 - `settings.gradle` Archivo de configuración donde se define el nombre del proyecto
   así como los subproyectos incluidos.
 
-Para establecer un nombre de proyecto diferentes, deberá
-editarse en el archivo `settings.gradle` la siguiente línea:
-
-```
-rootProject.name = 'my-custom-project-name'
-```
-
 ## Librería
 El subproyecto de librería está destinado a crear la lógica
 de negocio separada de la propia aplicación. 
@@ -30,10 +17,6 @@ de negocio separada de la propia aplicación.
 ## Aplicación
 El subproyecto de aplicación está destinado a la implementación de
 una aplicación de consola (CLI - Command Line Interface).
-
-Para ayudar a su creación, se incluye ya la dependencia de [Picocli][picocli]; una
-librería que ayuda a crear la interface pudiendo definir comandos, parámetros
-opcionales, repeticiones de parámetros, ...
 
 ## Compilación del proyecto
 Para compilar el proyecto completo
@@ -85,16 +68,8 @@ app.bat get-all -c -collect <collection> # Obtiene la cantidad de valores de la 
 
 ```
 
-## Extras implementados
-
-### Git Repositorio
-url al repositorio de Git: 
-
 ### Test unitarios
 El proyecto cuenta con test unitarios que comprueban el correcto funcionamiento de cada uno de los métodos y clases implementadas
-
-### Documentación
-El proyecto cuenta con documentación de cada uno de los métodos y clases implementadas. Esto permite crear una web de referencia del proyecto.
 
 ### Colecciones
 El proyecto cuenta con colecciones de datos que permiten almacenar y recuperar datos de forma eficiente. En el caso de que no se indique una coleccion los datos se almacenaran en una coleccion "default".
